@@ -1,0 +1,64 @@
+<form [formGroup]="busForm" (ngSubmit)="onSubmit()">
+  <!-- Driver Name -->
+  <mat-form-field>
+    <mat-label>Driver Name</mat-label>
+    <input matInput placeholder="Driver Name" formControlName="driverName">
+    <mat-error *ngIf="busForm.get('driverName')?.hasError('required')">
+      Driver Name is required
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Driver Phone Number -->
+  <mat-form-field>
+    <mat-label>Driver Phone Number</mat-label>
+    <input matInput placeholder="Driver Phone Number" formControlName="driverPhoneNumber">
+    <mat-error *ngIf="busForm.get('driverPhoneNumber')?.hasError('required')">
+      Driver Phone Number is required
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Bus Stop Station -->
+  <mat-form-field>
+    <mat-label>Bus Stop Station</mat-label>
+    <input matInput placeholder="Bus Stop Station" formControlName="busStopStation">
+    <mat-error *ngIf="busForm.get('busStopStation')?.hasError('required')">
+      Bus Stop Station is required
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Car Number -->
+  <mat-form-field>
+    <mat-label>Car Number</mat-label>
+    <input matInput placeholder="Car Number" formControlName="carNumber">
+  </mat-form-field>
+
+  <!-- Bus Capacity -->
+  <mat-form-field>
+    <mat-label>Bus Capacity</mat-label>
+    <input matInput placeholder="Bus Capacity" formControlName="busCapacity">
+  </mat-form-field>
+
+  <!-- Car Model -->
+  <mat-form-field>
+    <mat-label>Car Model</mat-label>
+    <input matInput placeholder="Car Model" formControlName="carModel">
+  </mat-form-field>
+
+  <!-- Bus Line Stops -->
+  <mat-form-field>
+    <mat-label>Bus Line Stops</mat-label>
+    <input matInput placeholder="Bus Line Stops" formControlName="busLineStops">
+  </mat-form-field>
+
+  <!-- Bus Type -->
+  <mat-form-field>
+    <mat-label>Bus Type</mat-label>
+    <input matInput placeholder="Bus Type" formControlName="busType">
+  </mat-form-field>
+
+  <!-- Is Deleted (Hidden field) -->
+
+
+  <button mat-raised-button color="primary" type="submit">Update Bus</button>
+  <button mat-button color="warn" type="button" (click)="onCancel()">Cancel</button>
+</form>
