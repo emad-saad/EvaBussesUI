@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class BusService {
-  private apiUrl = 'http://localhost:5074';  // Replace with your API endpoint
+  private apiUrl = 'http://ec2-18-203-171-136.eu-west-1.compute.amazonaws.com';  // Replace with your API endpoint
 
   constructor(private http: HttpClient) {}
 
