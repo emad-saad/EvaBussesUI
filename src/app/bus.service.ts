@@ -22,7 +22,7 @@ export class BusService {
   }
 
   addBus(bus: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, bus);
+    return this.http.post<any>(this.apiUrl+'/api/Bus/AddBus/', bus);
   }
 
   updateBus(id: number, bus: any): Observable<any> {

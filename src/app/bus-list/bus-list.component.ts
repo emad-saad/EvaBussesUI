@@ -93,5 +93,7 @@ export class BusListComponent implements OnInit {
   uploadTemplate(): void {
     this.fileInput.nativeElement.click();
   }
-  
+  navigateToAddBus(): void {
+    this.router.navigate(['buses/add']); // Adjust the route path based on your routing configuration
+  }
 }
