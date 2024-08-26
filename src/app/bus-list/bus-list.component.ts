@@ -59,11 +59,11 @@ export class BusListComponent implements OnInit {
     this.router.navigate(['/buses/add']);
   }
   downloadTemplate(): void {
-    this.http.get('assets/BusTemplate.xlsx', { responseType: 'blob' }).subscribe(blob => {
+    this.http.get('assets/Template.xlsx', { responseType: 'blob' }).subscribe(blob => {
       const fileURL = window.URL.createObjectURL(blob);
       const anchor = document.createElement('a');
       anchor.href = fileURL;
-      anchor.download = 'BusTemplate.xlsx';
+      anchor.download = 'Template.xlsx';
       document.body.appendChild(anchor);
       anchor.click();
       document.body.removeChild(anchor);
