@@ -21,7 +21,7 @@ export class AddBusComponent {
       DriverName: ['', Validators.required],
       DriverPhoneNumber: ['', Validators.required],
       BusStopStation: ['', Validators.required],
-      CarNumber: [null],
+      CarNumber: [null,Validators.required],
       BusCapacity: [null],
       CarModel: [''],
       BusLineStops: [''],
@@ -31,9 +31,7 @@ export class AddBusComponent {
   }
 
   onSubmit(): void {
-    if (!this.busForm.get('CarNumber')?.value) {
-      this.busForm.get('CarNumber')?.setValue(0);
-    }
+   
     if (!this.busForm.get('BusCapacity')?.value) {
       this.busForm.get('BusCapacity')?.setValue(0);
     }
