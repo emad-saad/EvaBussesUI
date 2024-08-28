@@ -3,6 +3,8 @@
   <!--<button mat-raised-button color="primary" (click)="downloadTemplate()">Download Excel Template</button>-->
   <input type="file" #fileInput style="display: none;" (change)="onFileChange($event)" />
   <button mat-raised-button color="accent" (click)="uploadTemplate()">Upload Excel Template</button>
+  <div *ngIf="fileErrorMessage" class="error-message">{{ fileErrorMessage }}</div>
+
 </div>
 
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8 enhanced-table">

@@ -3,6 +3,8 @@ import { BusService } from '../bus.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router'
 import { HttpClient } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 import  FileSaver from 'file-saver';
 
 @Component({
@@ -11,6 +13,8 @@ import  FileSaver from 'file-saver';
   styleUrls: ['./bus-list.component.css']
 })
 export class BusListComponent implements OnInit {
+  fileErrorMessage: string | null = null;
+
   @ViewChild('fileInput', { static: false }) fileInput!: ElementRef;
 
   displayedColumns: string[] = [
@@ -27,7 +31,7 @@ export class BusListComponent implements OnInit {
   ];
   dataSource = new MatTableDataSource<any>();
 
-  constructor(private busService: BusService, private router: Router,private http: HttpClient
+  constructor(private busService: BusService, private router: Router,private http: HttpClient,private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -78,17 +82,30 @@ export class BusListComponent implements OnInit {
   onFileChange(event: any): void {
     const file = event.target.files[0];
     if (file) {
-      this.busService.uploadBusTemplate(file).subscribe({
-        next: (response) => {
-          alert('File uploaded and processed successfully.');
-          this.loadBuses();
-        },
-        error: (error) => {
-          console.error('Upload error:', error);
-          alert('File upload failed.');
-        }
-      });
-    }}
+      const fileName = file.name.toLowerCase();
+      if (!fileName.endsWith('.xlsx')) {
+        this.fileErrorMessage = 'Only Excel files (.xlsx) are allowed.';
+        this.snackBar.open(this.fileErrorMessage, 'Close', {
+          duration: 3000,
+        });
+        event.target.value = ''; // Clear the input
+      } else {
+        this.fileErrorMessage = null;
+        // Handle the file upload here
+        this.busService.uploadBusTemplate(file).subscribe({
+          next: (response) => {
+            alert('File uploaded and processed successfully.');
+            this.loadBuses();
+          },
+          error: (error) => {
+            console.error('Upload error:', error);
+            alert('File upload failed.');
+          }
+        });
+      }
+    }
+  }
+  
 
   uploadTemplate(): void {
     this.fileInput.nativeElement.click();

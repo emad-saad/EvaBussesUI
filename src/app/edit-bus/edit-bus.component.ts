@@ -42,6 +42,18 @@ export class EditBusComponent implements OnInit {
   }
 
   onSubmit(): void {
+    if (!this.busForm.get('carNumber')?.value) {
+      this.busForm.get('carNumber')?.setValue(0);
+    }
+    if (!this.busForm.get('busCapacity')?.value) {
+      this.busForm.get('busCapacity')?.setValue(0);
+    }
+    if (!this.busForm.get('CarNumber')?.value) {
+      this.busForm.get('CarNumber')?.setValue(0);
+    }
+    if (!this.busForm.get('BusCapacity')?.value) {
+      this.busForm.get('BusCapacity')?.setValue(0);
+    }
     if (this.busForm.valid) {
       this.busService.updateBus(this.busId, this.busForm.value).subscribe(() => {
         this.router.navigate(['/buses']);

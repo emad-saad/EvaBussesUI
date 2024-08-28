@@ -11,11 +11,10 @@
       <p><strong>Car Model:</strong> {{bus.carModel}}</p>
       <p><strong>Bus Line Stops:</strong> {{bus.busLineStops}}</p>
       <p><strong>Bus Type:</strong> {{bus.busType}}</p>
-      <p><strong>Is Deleted:</strong> {{bus.isDeleted}}</p>
-      <p><strong>Created On:</strong> {{bus.createdOn}}</p>
-      <p><strong>Created By:</strong> {{bus.createdById}}</p>
+      <p><strong>Created On:</strong> {{bus.createdOn | date:'short'}}</p>
+      <!--<p><strong>Created By:</strong> {{bus.createdById}}</p>
       <p><strong>Updated On:</strong> {{bus.updatedOn}}</p>
-      <p><strong>Updated By:</strong> {{bus.updatedById}}</p>
+      <p><strong>Updated By:</strong> {{bus.updatedById}}</p>-->
     </div>
     <div class="form-actions">
       <button mat-raised-button color="primary" (click)="onBack()">Back to List</button>
